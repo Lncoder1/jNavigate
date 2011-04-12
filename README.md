@@ -1,4 +1,4 @@
 jNavigate jQuery Plugin
 ===
 
-Work in progress, demo site will be at http://www.profilepicture.co.uk in the next week.
+Work in progress, visit the [demo site](http://www.profilepicture.co.uk/demos/jNavigate) for option reference and usage.
