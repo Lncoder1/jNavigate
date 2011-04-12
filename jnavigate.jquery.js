@@ -5,12 +5,13 @@
     var settings = $.extend({
             intTrigger: "input[type=submit]"
           , extTrigger: ".transport"
-          , useHistory: true
           , switchContent: true
-          , loaded: null
           , showLoader: true
-          ,	error: null
+          , loadingColor: "#FFF"
           , spinner: "images/ajax-loader.gif"
+          , useHistory: true
+          , loaded: null
+          ,	error: null
         }, options)
       , useHistory = settings.useHistory && 
           !!(history && history.pushState);
@@ -30,7 +31,7 @@
         , backgroundImage: "url(" + settings.spinner + ")"
         , backgroundPosition: "center"
         , backgroundRepeat: "no-repeat"
-        , backgroundColor: "white"
+        , backgroundColor: settings.loadingColor
         , zIndex: 999
       });
       $overlay.appendTo(document.body);
@@ -41,7 +42,7 @@
     var transport = function (ev) {
       var url
         , $button = $(this)
-	      ,	$form
+        ,	$form
       	,	state = {
       			url: null
 	        ,	httpmethod: "GET"
@@ -86,7 +87,7 @@
               }
               if (settings.loaded)
                 settings.loaded(data);
-              // only push state for gets (don't want repeat form posts etc
+              // only push state for gets (don't want repeat form posts etc)
               if (useHistory && state.httpmethod.toUpperCase() === "GET") {
                 var cs = history.state;
                 // don't push current state if page refresh
