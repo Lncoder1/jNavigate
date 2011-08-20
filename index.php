@@ -45,9 +45,9 @@
     </div>
     
     <footer>
-    	<a class="backBtn" href="http://www.profilepicture.co.uk/tutorials/jnavigate-jquery-plugin/">Back to the article</a>
-		</footer>
-		
+      <a class="backBtn" href="http://www.profilepicture.co.uk/tutorials/jnavigate-jquery-plugin/">Back to the article</a>
+    </footer>
+    
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -55,15 +55,15 @@
   <script>
     $(function () {
       $("#main").jNavigate({
-        	extTrigger: ".ext-trigger",
-					intTrigger: ".trigger"
+          extTrigger: ".ext-trigger",
+          intTrigger: ".trigger"
       });
       $("#testlink").click(function (ev) {
-      	ev.preventDefault();
-      	$("#main").jNavigate("loadContent", {
-      		url: $(this).attr("href"),
-      		httpmethod: "GET"
-      	});
+        ev.preventDefault();
+        $("#main").jNavigate("loadContent", {
+          url: $(this).attr("href"),
+          httpmethod: "GET"
+        });
       });
       $("#kill").click(function (ev) {
         ev.preventDefault();
