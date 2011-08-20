@@ -9,7 +9,7 @@
       , spinner: "images/ajax-loader.gif"
       , useHistory: true
       , loaded: null
-      ,  error: null
+      , error: null
     }
   
   ,  methods = {
@@ -17,6 +17,7 @@
         init: function (opts) {
           var selector = this.selector
             ,  options = $.extend(settings, opts);
+          // push current history state onto the stack in same format
           if (useHistory) {
             history.replaceState(
                 createHistoryState(
@@ -34,7 +35,7 @@
             $this.delegate(options.intTrigger, "click", options, transport);
             $this.data("jnavigate-triggers", {
                 intTrigger: options.intTrigger
-              ,  extTrigger: options.extTrigger
+              , extTrigger: options.extTrigger
             });
           });
           
@@ -73,7 +74,7 @@
        
       ,  loadContent: function (options) {
           var selector = this.selector;
-          options = $.extend(options, settings);
+          $.extend(options, settings);
           return this.each(function () {
             var $this = $(this);
             if (options.showLoader) {

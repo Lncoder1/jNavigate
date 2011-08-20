@@ -25,18 +25,14 @@
     <header>
       <h1>jNavigate jQuery plugin</h1>
     </header>
-    
-    <p><a id="testlink" href="index.php?page=form">Form example</a></p>
-
-    <p><a id="kill" href="index.php">Kill it!</a></p>
-
-    <p><a id="loading" href="#">Add loading</a></p>
 
     <nav id="main-nav">
       <ol>
         <li><a class="ext-trigger" href="index.php?page=home">jNavigate home</a></li>
         <li><a class="ext-trigger" href="index.php?page=docs">Documentation</a></li>
         <li><a class="ext-trigger" href="index.php?page=form">Form example</a></li>
+        <li><a class="ext-trigger" href="index.php?page=utils">Utility methods</a></li>
+        <li><a id="kill" href="index.php?page=form">Kill jNavigate</a></li>
       </ol>
     </nav>
     
@@ -56,7 +52,8 @@
     $(function () {
       $("#main").jNavigate({
           extTrigger: ".ext-trigger",
-          intTrigger: ".trigger"
+          intTrigger: ".trigger",
+          loaded: utilsDemos
       });
       $("#testlink").click(function (ev) {
         ev.preventDefault();
@@ -69,15 +66,16 @@
         ev.preventDefault();
         $("#main").jNavigate("destroy");
       });
-      $("#loading").click(function (ev) {
-        ev.preventDefault();
-        var $main = $("#main");
-        $main.jNavigate("addLoading");
-        setTimeout(function () {
-          $loading = $main.data("jnavigate-overlay");
-          $loading.remove();
-        }, 4000);
-      });
+      utilsDemos(); // just in case user landed on utils page!
     });
+    
+    function utilsDemos () {
+      $("#loadingDemo").click(function (ev) {
+        ev.preventDefault();
+        var $box = $("#loadingBox").jNavigate("addLoading");
+        $loading = $box.data("jnavigate-overlay");
+        $loading.fadeOut(400);
+      });
+    }
   </script>
 <?php } include 'inc/footer.php'; ?>
