@@ -89,6 +89,7 @@
                 settings.loaded(data);
               // only push state for gets (don't want repeat form posts etc)
               if (useHistory && state.httpmethod.toUpperCase() === "GET") {
+              	console.log("pushing");
                 var cs = history.state;
                 // don't push current state if page refresh
                 if (cs && ((cs.url && cs.url === state.url) && 
