@@ -117,9 +117,8 @@
               // only push get requests (don't want repeat form posts etc)
               if ((options.useHistory && historySupported) && 
                 ((options.httpmethod || "GET").toUpperCase() === "GET")) {
-                var cs = history.state;
                 // don't push current state if page refresh
-                if (cs && (cs.url && cs.url === options.url)) {
+                if (locationCache === options.url) {
                     return;
                 }
                 history.pushState(
@@ -205,7 +204,8 @@
     }
   };
   
-  var historySupported = !!(history && history.pushState);
+  var historySupported = !!(history && history.pushState)
+    , locationCache = location.href; // not all support history.state
   
   /**
    * If users browser supports the history API
@@ -216,6 +216,7 @@
   if (historySupported) {
     window.addEventListener("popstate", function (ev) {
       if (ev.state && ev.state.selector) {
+        locationCache = ev.state.url;
         methods.navigate.call($(ev.state.selector), ev.state);
       }
     }, false);
