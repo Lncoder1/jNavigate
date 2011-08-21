@@ -29,7 +29,7 @@
             $.extend({selector: selector}, options)
           )
         ,  ""
-        ,  window.location.href
+        ,  location.href
       );
     }
     return this.each(function () {
@@ -134,7 +134,7 @@
           , error : options.error || function (xhr, ts, err) {
               if (options.$form && options.$form.length) {
                 options.$form.submit();
-              } else window.location.href = options.url;
+              } else location.href = options.url;
             }
         });
       });
