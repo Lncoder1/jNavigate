@@ -7,6 +7,7 @@
       , switchContent: true
       , showLoader: true
       , loadingColor: "#FFF"
+      , useHistory: true
       , spinner: "images/ajax-loader.gif"
       , options: true
       , loaded: null
@@ -20,7 +21,7 @@
    */
   methods.init = function (opts) {
     var selector = this.selector
-      ,  options = $.extend(settings, opts);
+      , options = $.extend(settings, opts);
     // replace current history state (should just be the landing page)
     if (options.useHistory && historySupported) {
       history.replaceState(
