@@ -86,8 +86,8 @@
    * requires at least url in opts
    */
   methods.navigate = function (opts) {
-    var selector = this.selector; // need to retain selector for history state
-    options = $.extend(settings, opts);
+    var selector = this.selector // need to retain selector for history state
+      , options = $.extend(settings, opts);
     if (options.url) {
       return this.each(function () {
         var $this = $(this);
