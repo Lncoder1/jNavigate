@@ -117,7 +117,7 @@
               // only push get requests (don't want repeat form posts etc)
               if ((options.useHistory && historySupported) && 
                 ((options.httpmethod || "GET").toUpperCase() === "GET")) {
-                // don't push current state if page refresh
+                // don't push state if refresh or history pop
                 if (locationCache === options.url) {
                     return;
                 }
@@ -134,7 +134,7 @@
           , error : options.error || function (xhr, ts, err) {
               if (options.$form && options.$form.length) {
                 options.$form.submit();
-              } else window.location = options.url;
+              } else window.location.href = options.url;
             }
         });
       });
