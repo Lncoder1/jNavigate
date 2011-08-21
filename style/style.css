@@ -238,10 +238,12 @@ fieldset {
 
 /* =Utility method demos
 -------------------------------------------------------------------- */
-#loadingBox {
+#loadingBox,
+#navigateBox {
   width: 200px;
   height: 200px;
   margin: 20px auto;
   border: dashed 2px #d8d8d8;
   padding: 25px;
 }
+

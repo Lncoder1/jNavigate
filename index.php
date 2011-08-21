@@ -55,13 +55,6 @@
           intTrigger: ".trigger",
           loaded: utilsDemos
       });
-      $("#testlink").click(function (ev) {
-        ev.preventDefault();
-        $("#main").jNavigate("loadContent", {
-          url: $(this).attr("href"),
-          httpmethod: "GET"
-        });
-      });
       $("#kill").click(function (ev) {
         ev.preventDefault();
         $("#main").jNavigate("destroy");
@@ -72,10 +65,27 @@
     function utilsDemos () {
       $("#loadingDemo").click(function (ev) {
         ev.preventDefault();
-        var $box = $("#loadingBox").jNavigate("addLoading");
-        $loading = $box.data("jnavigate-overlay");
-        $loading.fadeOut(400);
+        var $box = $("#loadingBox")
+          , $loading = $box.data("jnavigate-overlay");
+        if (!$loading) {
+          $box.jNavigate("overlay");
+          $loading = $box.data("jnavigate-overlay");
+          $(this).text("Remove loading overlay");
+        } else if ($loading.is(":hidden")) {
+          $(this).text("Remove loading overlay");
+          $loading.fadeIn(250);
+        } else {
+          $(this).text("Add loading overlay");
+          $loading.fadeOut(400);
+        }
+      });
+      $("#navigateDemo").click(function (ev) {
+        ev.preventDefault();
+        $("#navigateBox").jNavigate("navigate", {
+            url: this.href
+          , useHistory: false
+        });
       });
     }
   </script>
-<?php } include 'inc/footer.php'; ?>
+<?php include 'inc/footer.php'; } ?>
