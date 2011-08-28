@@ -8,8 +8,7 @@
     , showLoader: true
     , loadingColor: "#FFF"
     , useHistory: true
-    , spinner: "images/ajax-loader.gif"
-    , options: true
+    , spinner: "styles/images/ajax-loader.gif"
     , loaded: null
     , error: null
   }
@@ -171,7 +170,7 @@
     if (this.nodeName === "INPUT" || this.nodeName === "BUTTON") {
       request.$form = $button.closest("form");
       if (request.$form.length) { // found an ancestor form to submit
-        request.url = request.$form.attr("action");
+        request.url = request.$form.attr("action") || location.href;
         request.httpmethod = request.$form.attr("method");
         request.params += "&" + request.$form.serialize();
         if ($button.attr("name")) { // send the clicked buttons name through
