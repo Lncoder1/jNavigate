@@ -63,7 +63,7 @@
     });
     
     function utilsDemos () {
-      $("#loadingDemo").click(function (ev) {
+      $("#loadingDemo").unbind().click(function (ev) {
         ev.preventDefault();
         var $box = $("#loadingBox")
           , $loading = $box.data("jnavigate-overlay");
@@ -79,7 +79,7 @@
           $loading.fadeOut(400);
         }
       });
-      $("#navigateDemo").click(function (ev) {
+      $("#navigateDemo").unbind().click(function (ev) {
         ev.preventDefault();
         $("#navigateBox").jNavigate("navigate", {
             url: this.href

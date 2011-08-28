@@ -2,17 +2,17 @@
   
   // default settings
   var settings = {
-        intTrigger: ".jnavigate-int-trigger"
-      , extTrigger: ".jnavigate-ext-trigger"
-      , switchContent: true
-      , showLoader: true
-      , loadingColor: "#FFF"
-      , useHistory: true
-      , spinner: "images/ajax-loader.gif"
-      , options: true
-      , loaded: null
-      , error: null
-    }
+      intTrigger: ".jnavigate-int-trigger"
+    , extTrigger: ".jnavigate-ext-trigger"
+    , switchContent: true
+    , showLoader: true
+    , loadingColor: "#FFF"
+    , useHistory: true
+    , spinner: "images/ajax-loader.gif"
+    , options: true
+    , loaded: null
+    , error: null
+  }
   
   var methods = {}; // plugin API
     
@@ -21,7 +21,7 @@
    */
   methods.init = function (opts) {
     var selector = this.selector
-      , options = $.extend(settings, opts);
+      , options = $.extend({}, settings, opts);
     // replace current history state (should just be the landing page)
     if (options.useHistory && historySupported) {
       history.replaceState(
@@ -55,7 +55,7 @@
    * a reference to the related overlay in the jQuery data object for each
    */
   methods.overlay = function (opts) {
-    var options = $.extend(settings, opts);
+    var options = $.extend({}, settings, opts);
     return this.each(function () {
       var $container = $(this)
         , $overlay = $(document.createElement("div"))
@@ -88,7 +88,7 @@
    */
   methods.navigate = function (opts) {
     var selector = this.selector // need to retain selector for history state
-      , options = $.extend(settings, opts);
+      , options = $.extend({}, settings, opts);
     if (options.url) {
       return this.each(function () {
         var $this = $(this);
